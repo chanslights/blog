@@ -1,3 +1,2 @@
-# chans.github.io
-my private blog
-hello world!
+# 我爱提提
+嘻嘻
