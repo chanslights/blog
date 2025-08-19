@@ -1,59 +1,50 @@
 ---
 layout: post
-title: "欢迎来到我的博客"
-date: 2024-01-15
-categories: [博客]
-tags: [欢迎, 介绍]
-description: "这是我的第一篇博客文章，欢迎来到我的个人博客！"
+title: "Building Scalable Mobile Projects at Android Makers 2025"
+date: 2024-01-15 10:00:00 +0800
+categories: [mobile, android, architecture]
+tags: [android, scalability, architecture, conference]
 ---
 
-# 欢迎来到我的博客！
+At Android Makers 2025, I had the privilege of sharing insights about building scalable mobile projects that can grow with your team and user base. Here are the key takeaways from my presentation.
 
-你好！欢迎来到我的个人博客。这里是我分享学习心得、技术经验和生活感悟的地方。
+## The Challenge of Scale
 
-## 关于这个博客
+As mobile applications grow in complexity and user base, maintaining code quality and development velocity becomes increasingly challenging. I've observed teams struggle with:
 
-这个博客使用 [Jekyll](https://jekyllrb.com/) 构建，托管在 [GitHub Pages](https://pages.github.com/) 上。我选择这个技术栈的原因有：
+- Monolithic architectures that become unwieldy
+- Testing strategies that don't scale with codebase growth  
+- Build times that slow down development cycles
+- Onboarding friction for new team members
 
-- **简单易用**: Jekyll 是一个静态网站生成器，学习曲线平缓
-- **免费托管**: GitHub Pages 提供免费且稳定的托管服务
-- **版本控制**: 所有内容都通过 Git 管理，方便备份和协作
-- **高度可定制**: 可以完全控制网站的外观和功能
+## Architectural Principles
 
-## 博客特色
+The foundation of any scalable mobile project lies in its architecture. Here are the principles I recommend:
 
-### 📚 文章分类
-我会将文章按照主题进行分类，比如：
-- **技术分享**: 编程、开发、工具使用等
-- **学习笔记**: 课程学习、读书心得等
-- **生活感悟**: 日常思考、旅行记录等
+### Modularization
 
-### 🏷️ 标签系统
-每篇文章都会添加相关标签，方便你快速找到感兴趣的内容。
+Breaking your application into well-defined modules provides several benefits:
 
-### 📱 响应式设计
-博客支持各种设备访问，在手机、平板、电脑上都能获得良好的阅读体验。
+- **Faster build times** through parallel compilation
+- **Better separation of concerns** making code easier to understand
+- **Improved testability** with isolated components
+- **Team autonomy** allowing different teams to own different modules
 
-## 未来计划
+### Dependency Injection
 
-我计划在这个博客上分享：
+A robust dependency injection framework is crucial for:
 
-1. **技术文章**: 分享我在学习和工作中遇到的技术问题和解决方案
-2. **学习笔记**: 记录各种课程和书籍的学习心得
-3. **项目展示**: 展示我参与或独立完成的项目
-4. **生活记录**: 记录生活中的美好时刻和思考
+- Managing complex object graphs
+- Enabling effective unit testing through mocking
+- Supporting different configurations across build variants
 
-## 联系我
+## Development Practices
 
-如果你有任何问题或建议，欢迎通过以下方式联系我：
+Beyond architecture, certain development practices are essential:
 
-- 📧 邮箱: [your-email@example.com](mailto:your-email@example.com)
-- 🐙 GitHub: [你的用户名](https://github.com/你的用户名)
+- **Continuous Integration** with comprehensive test suites
+- **Code reviews** that focus on maintainability
+- **Documentation** that grows with the codebase
+- **Monitoring** to understand real-world performance
 
-## 结语
-
-感谢你访问我的博客！希望这里的内容能对你有所帮助，也欢迎你经常回来看看。
-
----
-
-*最后更新: 2024年1月15日* 
+The mobile development landscape continues to evolve, but these fundamental principles remain constant. Building with scale in mind from day one pays dividends as your project grows. 

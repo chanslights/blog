@@ -1,8 +1,8 @@
 # Site settings
-title: "我的博客"
-author: "我的名字"
-tagline: "思考，创作，分享"
-description: "一个专注于技术分享与思考的个人博客"
+title: "Cyril Mottier"
+author: "Cyril Mottier"
+tagline: "Leadership, engineering and product"
+description: "Personal blog focused on leadership, engineering and product development"
 email: your-email@example.com
 url: "https://chanslights.github.io"
 baseurl: "/blog"
@@ -67,7 +67,7 @@ twitter:
   card: summary
 
 social:
-  name: 我的名字
+  name: Cyril Mottier
   links:
     - https://github.com/chanslights
     - https://twitter.com/your-twitter 

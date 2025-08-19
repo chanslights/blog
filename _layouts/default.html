@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: "我的博客" }}</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: "Cyril Mottier" }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
     
     <!-- Fonts -->
@@ -24,10 +24,10 @@
         <header class="site-header">
             <nav class="nav">
                 <div class="nav-left">
-                    <a href="{{ '/' | relative_url }}" class="nav-title">{{ site.title | default: "我的博客" }}</a>
+                    <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
                 </div>
                 <div class="nav-right">
-                    <a href="{{ '/about' | relative_url }}" class="nav-link">关于</a>
+                    <a href="{{ '/about' | relative_url }}" class="nav-link">About</a>
                     <span class="nav-separator">|</span>
                     <button class="theme-toggle" onclick="toggleTheme()">
                         <span class="theme-light">LIGHT</span><span class="theme-dark">DARK</span>
@@ -41,7 +41,7 @@
         </main>
 
         <footer class="site-footer">
-            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author | default: "博主" }}.</p>
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author | default: "Cyril Mottier" }}.</p>
         </footer>
     </div>
 
