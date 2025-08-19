@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 返回顶部按钮
     const backToTop = document.createElement('button');
-    backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    backToTop.innerHTML = '↑';
     backToTop.className = 'back-to-top';
     backToTop.style.cssText = `
         position: fixed;
