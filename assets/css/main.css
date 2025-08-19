@@ -202,6 +202,10 @@ body {
     margin-bottom: var(--spacing-xs);
     line-height: 1.3;
     text-align: center; /* 居中显示文章标题 */
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.5rem;
 }
 
 .post-item-title a {
@@ -218,7 +222,7 @@ body {
     font-size: 0.875rem;
     color: var(--text-secondary);
     font-weight: 400;
-    text-align: center; /* 居中显示日期 */
+    flex-shrink: 0;
 }
 
 /* Post Content */
