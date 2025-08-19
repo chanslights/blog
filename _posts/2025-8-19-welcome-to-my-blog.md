@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Welcome to my world"
+title: "Welcome: Hello to my world"
 date: 2025-8-18 10:00:00 +0800
 categories: [blog]
 tags: [welcome, introduction]

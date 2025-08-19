@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cmake basic knowledge"
+title: "Cmake: Cross-Platform Build Tool"
 date: 2025-8-18 14:30:00 +0800
 categories: [mydumper]
 tags: [cmake]

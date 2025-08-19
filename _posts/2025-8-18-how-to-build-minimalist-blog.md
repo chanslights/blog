@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "minimalist blog design"
+title: "Principle of minimalist blog design"
 date: 2025-8-18 15:30:00 +0800
 categories: [tutorial, web-development]
 tags: [jekyll, github-pages, minimalism, design]
