@@ -370,11 +370,7 @@ body {
     border-bottom: none;
 }
 
-.post-content tr:nth-child(even),
-.page-content tr:nth-child(even) {
-    background-color: var(--border-color);
-    opacity: 0.3;
-}
+/* Remove striped table effect - all rows have same background */
 
 /* Table responsive wrapper */
 .post-content .table-wrapper,
