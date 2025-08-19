@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "ETCD基本知识：深入理解分布式键值存储"
-date: 2024-12-20 15:00:00 +0800
-categories: [技术, 分布式系统]
-tags: [ETCD, 分布式, Kubernetes, Raft, 一致性]
+title: "ETCD: In-depth Understanding of Distributed Key-Value Storage"
+date: 2025-6-20 15:00:00 +0800
+categories: [ETCD, DBHA]
+tags: [ETCD, Distributed, Kubernetes, Raft, Consistency]
 ---
 
 # 前沿

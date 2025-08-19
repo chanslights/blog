@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "欢迎来到我的博客"
+title: "Welcome to my world"
 date: 2024-12-19 10:00:00 +0800
 categories: [blog]
 tags: [welcome, introduction]

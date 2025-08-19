@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "如何为 Jekyll 博客添加新文章"
-date: 2024-12-20 14:30:00 +0800
-categories: [教程, 博客]
-tags: [Jekyll, Markdown, 写作]
+title: "How to Add a New Post to a Jekyll Blog"
+date: 2025-8-18 14:30:00 +0800
+categories: [blog]
+tags: [Jekyll, Markdown]
 ---
 
 今天我来分享一下如何为 Jekyll 博客添加新文章。作为一个静态网站生成器，Jekyll 让写博客变得非常简单。

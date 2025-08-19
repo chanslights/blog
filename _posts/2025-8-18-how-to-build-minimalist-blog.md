@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "如何构建一个极简风格的个人博客"
+title: "minimalist blog design"
 date: 2024-12-18 15:30:00 +0800
 categories: [tutorial, web-development]
 tags: [jekyll, github-pages, minimalism, design]
