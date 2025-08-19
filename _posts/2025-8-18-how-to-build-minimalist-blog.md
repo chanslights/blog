@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "minimalist blog design"
-date: 2024-12-18 15:30:00 +0800
+date: 2025-8-18 15:30:00 +0800
 categories: [tutorial, web-development]
 tags: [jekyll, github-pages, minimalism, design]
 ---

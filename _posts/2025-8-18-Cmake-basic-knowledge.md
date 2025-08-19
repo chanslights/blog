@@ -44,26 +44,26 @@ CMake本身不是构建工具，而是生成构建系统的工具，它生成的
 
 | 作用 | 命令 |
 | --- | --- |
-| 指定CMake的最低版本要求 | cmake\_minimum\_required(VERSION <version>) |
-| 定义项目和指定的编译语言 | project(<project\_name> \[<language>...\] |
-| 指定要生成的**可执行文件和其源文件** | add\_executable(<target> <source\_files>...) |
-| 创建一个库(静态库和动态库)及其源文件 | add\_library(<target> <sources\_files>) |
-| 链接目标文件与其他库 | target\_link\_libraries(<target> <libraries>...) |
-| 添加头文件搜索路径 | include\_directories(<dirs>...) |
+| 指定CMake的最低版本要求 | cmake_minimum_required(VERSION <version>) |
+| 定义项目和指定的编译语言 | project(<project_name> ]<language>...\] |
+| 指定要生成的**可执行文件和其源文件** | add_executable(<target> <source\_files>...) |
+| 创建一个库(静态库和动态库)及其源文件 | add_library(<target> <sources\_files>) |
+| 链接目标文件与其他库 | target_link_libraries(<target> <libraries>...) |
+| 添加头文件搜索路径 | include_directories(<dirs>...) |
 | 设置变量的值 | set(<variable> <value>...) |
-| 设置目标属性 | target\_include\_directories(<br>TARGET target\_name \[BEFORE \| AFTER\]<br>\[SYSTEM\] \[PUBLIC \| PRIVATE \| INTERFACE\]<br>\[items1...\]) |
-| 安装规则 | install(TARGETS target1 \[target2 ...\]<br>\[RUNTIME DESTINATION dir\]<br>\[LIBRARY DESTINATION dir\]<br>\[ARCHIVE DESTINATION dir\]<br>\[INCLUDES DESTINATION \[dir ...\]\]<br>\[PRIVATE\_HEADER DESTINATION dir\]<br>\[PUBLIC\_HEADER DESTINATION dir\]) |
-| 条件语句 | if(expression)<br>#Commands<br>else if(expression)<br>#Commands<br>else()<br>endif() |
-| 自定义命令 (add\_custom\_command 命令) | add\_custom\_command( <br>TARGET target <br>PRE\_BUILD \| PRE\_LINK \| POST\_BUILD COMMAND command1 \[ARGS\] \[WORKING\_DIRECTORY dir\]<br>\[COMMAND command2 \[ARGS\]\]<br>\[DEPENDS \[depend1 \[depend2 ...\]\]\]\[<br>COMMENT comment\]<br>\[VERBATIM\]) |
+| 设置目标属性 | target\_include_directories(TARGET target\_name ]BEFORE | AFTER\]]SYSTEM\] ]PUBLIC | PRIVATE | INTERFACE\]]items1...\]) |
+| 安装规则 | install(TARGETS target1 ]target2 ...\]]RUNTIME DESTINATION dir\]]LIBRARY DESTINATION dir\]]ARCHIVE DESTINATION dir\]]INCLUDES DESTINATION ]dir ...\]\]]PRIVATE\_HEADER DESTINATION dir\]]PUBLIC\_HEADER DESTINATION dir\]) |
+| 条件语句 | if(expression)#Commandselse if(expression)#Commandselse()endif() |
+| 自定义命令 (add_custom_command 命令) | add_custom_command( TARGET target PRE\_BUILD | PRE\_LINK | POST\_BUILD COMMAND command1 ]ARGS\] ]WORKING\_DIRECTORY dir\]]COMMAND command2 ]ARGS\]\]]DEPENDS ]depend1 ]depend2 ...\]\]\]]COMMENT comment\]]VERBATIM\]) |
 
 举个例子：
 
-cmake\_minimum\_required(VERSION 3.10)
-
-project(MyProject CXX)add\_executable(MyExecutable main.cpp)
-
-set(CMAKE\_CXX\_STANDARD 11)
-
+```cmake
+cmake_minimum_required(VERSION 3.10)
+project(MyProject CXX)
+add_executable(MyExecutable main.cpp)
+set(CMAKE_CXX_STANDARD 11)
+```
 ## 变量和缓存
 
 变量分为普通变量和缓存变量
@@ -84,45 +84,45 @@ set(CMAKE\_CXX\_STANDARD 11)
 
 ## 查找库和包
 
-find\_package()指令自动检测和配置外部库和包，常用于查找系统安装的库和第三方库
+find_package()指令自动检测和配置外部库和包，常用于查找系统安装的库和第三方库
 
-1.  find\_package()指令
+1.  find_package()指令
 
-find\_package(Boost REQUIRED)
+find_package(Boost REQUIRED)
 
 find\_pakcage(Boost 1.70 REQUIRED)
 
-find\_package(OpenCV REQUIRED PATHS /path/to/opencv)
+find_package(OpenCV REQUIRED PATHS /path/to/opencv)
 
-target\_link\_libraries(MyExecutable Boost::Boost)
+target_link_libraries(MyExecutable Boost::Boost)
 
 设置包含目录和链接目录：
 
-include\_directories(${Boost\_INCLUDE\_DIRS})
+include_directories(${Boost\_INCLUDE\_DIRS})
 
 link\_directories(${Boost\_LIBRARY\_DIRS})
 
 2.  使用第三方库
 
-cmake\_minimum\_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.10)
 
 project(MyProject CXX)
 
 # 查找 Boost 库
 
-find\_package(Boost REQUIRED)
+find_package(Boost REQUIRED)
 
 # 添加源文件
 
-add\_executable(MyExecutable main.cpp)
+add_executable(MyExecutable main.cpp)
 
 # 链接 Boost 库
 
-target\_link\_libraries(MyExecutable Boost::Boost)
+target_link_libraries(MyExecutable Boost::Boost)
 
-**include\_directories() 和 target\_include\_directories()的区别**
+**include_directories() 和 target\_include_directories()的区别**
 
-在 CMake 中，include\_directories() 和 target\_include\_directories() 都用于指定头文件的搜索路径，但它们的作用范围和使用方式有显著区别。
+在 CMake 中，include_directories() 和 target\_include_directories() 都用于指定头文件的搜索路径，但它们的作用范围和使用方式有显著区别。
 
 **相同点：**
 
@@ -134,7 +134,7 @@ target\_link\_libraries(MyExecutable Boost::Boost)
 
 **区别：**
 
-| **特性** | **include\_directories()** | **target\_include\_directories()** |
+| **特性** | **include_directories()** | **target\_include_directories()** |
 | --- | --- | --- |
 | **作用范围** | 全局作用域，影响所有目标（target）。 | 仅作用于指定的目标（target）。 |
 | **推荐使用场景** | 适用于简单的项目或旧版 CMake 项目。 | 适用于现代 CMake 项目，推荐优先使用。 |
@@ -155,7 +155,13 @@ target\_link\_libraries(MyExecutable Boost::Boost)
 
 ● **重新配置和构建**：处理项目设置的更改
 
-![image](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/1GXn45KvKELdkqDQ/img/e071b23f-5668-4be5-bf7e-49fb47d3d018.png)
+## CMake构建流程图
+
+```
+源代码 -> CMakeLists.txt -> CMake配置 -> 构建文件生成 -> 编译构建 -> 可执行文件
+```
+
+**注：** 原图片链接已失效，这里用文字描述代替构建流程。
 
 ## 详细流程：
 
@@ -255,11 +261,11 @@ endfunction()
 
 **3.1 查找包的高级用法**
 
-find\_package()指令可以用于查找和配置复杂的第三方库和包
+find_package()指令可以用于查找和配置复杂的第三方库和包
 
-查找包的高级选项: find\_package(Boost REQUIRED COMPOENENTS filesystem system)
+查找包的高级选项: find_package(Boost REQUIRED COMPOENENTS filesystem system)
 
-设置查找路径：set(BOOST\_ROOT "/path/to/boost") find\_package(Boost REQUIRED)
+设置查找路径：set(BOOST\_ROOT "/path/to/boost") find_package(Boost REQUIRED)
 
 **3.2 配置文件和构建选项**
 
@@ -279,7 +285,7 @@ CMake允许自定义构建命令，以便在构建过程中执行额外的操作
 
 添加自定义命令：
 
-add\_custom\_command( 
+add_custom_command( 
 
 OUTPUT ${CMAKE\_BINARY\_DIR}/generated\_file.txt 
 
@@ -329,11 +335,11 @@ CMake支持交叉编译，即为不同的架构或平台构建项目
 
 设置编译选项：
 
-set\_target\_properties(MyExectuable PROPERTIES COMPILE\_OPTIONS "-Wall")
+set_target_properties(MyExectuable PROPERTIES COMPILE\_OPTIONS "-Wall")
 
 设置连接选项：
 
-set\_target\_properties(MyExectuable PORPERTIES LINK\_FLAGS "-L/path/to/lib")
+set_target_properties(MyExectuable PORPERTIES LINK\_FLAGS "-L/path/to/lib")
 
 **6.2 自定义编译和链接选项**
 
@@ -341,14 +347,14 @@ set\_target\_properties(MyExectuable PORPERTIES LINK\_FLAGS "-L/path/to/lib")
 
 设置编译选项:
 
-target\_compile\_options(MyExecutable PRIVATE -Wall -Wextra)
+target_compile_options(MyExecutable PRIVATE -Wall -Wextra)
 
 设置链接选项:
 
-target\_link\_options(MyExecutable PRIVATE -L/path/to/lib)
+target_link_options(MyExecutable PRIVATE -L/path/to/lib)
 
 # 参考内容
 
-[++CMake Tutorial &mdash; CMake 4.1.0 Documentation++](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
+[CMake Tutorial &mdash; CMake 4.1.0 Documentation](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 
-[++CMake 教程 | 菜鸟教程++](https://www.runoob.com/cmake/cmake-tutorial.html)
+[CMake 教程 | 菜鸟教程](https://www.runoob.com/cmake/cmake-tutorial.html)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Welcome to my world"
-date: 2024-12-19 10:00:00 +0800
+date: 2025-8-18 10:00:00 +0800
 categories: [blog]
 tags: [welcome, introduction]
 ---
