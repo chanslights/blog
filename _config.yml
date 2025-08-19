@@ -68,6 +68,6 @@ locale: zh_CN
 
 # 社交媒体链接
 social:
-  twitter: "yourusername"
-  github: "yourusername"
-  linkedin: "yourusername" 
+  twitter: ""
+  github: "jcc"
+  linkedin: "" 

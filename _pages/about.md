@@ -20,8 +20,7 @@ permalink: /about/
 
 如果你想与我交流或合作，可以通过以下方式联系我：
 
-- 邮箱：[{{ site.email }}](mailto:{{ site.email }})
-- GitHub：[{{ site.social.github }}](https://github.com/{{ site.social.github }})
-- Twitter：[{{ site.social.twitter }}](https://twitter.com/{{ site.social.twitter }})
+- 邮箱：[jiangsc2024@163.com](mailto:jiangsc2024@163.com)
+- GitHub：[jcc](https://github.com/jcc)
 
 感谢你的访问，希望这里的内容对你有所帮助！ 
