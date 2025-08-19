@@ -12,6 +12,18 @@ highlighter: rouge
 permalink: /:year/:month/:day/:title/
 timezone: Asia/Shanghai
 
+# Kramdown设置
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
 # 插件
 plugins:
   - jekyll-feed

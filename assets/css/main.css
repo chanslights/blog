@@ -324,6 +324,82 @@ body {
     padding: 0;
 }
 
+/* Table Styles */
+.post-content table,
+.page-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-md) 0;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.post-content th,
+.page-content th {
+    background-color: var(--border-color);
+    color: var(--text-color);
+    font-weight: 600;
+    padding: var(--spacing-sm);
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.post-content th:last-child,
+.page-content th:last-child {
+    border-right: none;
+}
+
+.post-content td,
+.page-content td {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.post-content td:last-child,
+.page-content td:last-child {
+    border-right: none;
+}
+
+.post-content tr:last-child td,
+.page-content tr:last-child td {
+    border-bottom: none;
+}
+
+.post-content tr:nth-child(even),
+.page-content tr:nth-child(even) {
+    background-color: var(--border-color);
+    opacity: 0.3;
+}
+
+/* Table responsive wrapper */
+.post-content .table-wrapper,
+.page-content .table-wrapper {
+    overflow-x: auto;
+    margin: var(--spacing-md) 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+/* Responsive table styles */
+@media (max-width: 768px) {
+    .post-content table,
+    .page-content table {
+        font-size: 0.875rem;
+    }
+    
+    .post-content th,
+    .page-content th,
+    .post-content td,
+    .page-content td {
+        padding: var(--spacing-xs);
+    }
+}
+
 /* Post Tags */
 .post-tags {
     margin-bottom: var(--spacing-xl);
