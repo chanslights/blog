@@ -171,6 +171,7 @@ body {
     font-size: 1.25rem;
     color: var(--text-secondary);
     font-weight: 400;
+    margin-bottom: var(--spacing-lg);
 }
 
 /* Posts List */
@@ -238,7 +239,7 @@ body {
 
 .post-title {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: var(--spacing-sm);
     line-height: 1.2;
 }
