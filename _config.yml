@@ -1,59 +1,24 @@
-# Site settings
-title: "Cyril Mottier"
-tagline: "Android Developer & Engineering Leader"
-description: "Thoughts on Android development, mobile engineering, and building great products."
-author: "Cyril Mottier"
-email: "hello@cyrilmottier.com"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://cyrilmottier.github.io" # the base hostname & protocol for your site
+# 网站设置
+title: "Chans"
+description: "Leadership, engineering and product"
+author: "chans"
+email: "jiangsc2024@163.com"
+url: "https://chanslights.github.io"
+baseurl: "/blog"
 
-# Social links
-social:
-  - name: "Twitter"
-    url: "https://twitter.com/cyrilmottier"
-    icon: "🐦"
-  - name: "GitHub"
-    url: "https://github.com/cyrilmottier"
-    icon: "💻"
-  - name: "LinkedIn"
-    url: "https://linkedin.com/in/cyrilmottier"
-    icon: "💼"
-
-# Build settings
+# 构建设置
 markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title/
+timezone: Asia/Shanghai
 
-# Pagination
-paginate: 10
-paginate_path: "/page/:num/"
-
-# Collections
-collections:
-  posts:
-    output: true
-
-# Defaults
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      comments: true
-  - scope:
-      path: ""
-    values:
-      layout: "default"
-
-# Plugins
+# 插件
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  - jekyll-paginate
 
-# Exclude from processing
+# 排除文件
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -63,44 +28,34 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
-  - LICENSE
-  - .gitignore
-  - .git/
+  - start.sh
+  - start.bat
 
-# Sass
-sass:
-  style: compressed
-  sass_dir: _sass
+# 集合设置
+collections:
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title/
 
-# Markdown settings
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-  syntax_highlighter_opts:
-    css_class: 'highlight'
-    span:
-      line_numbers: false
-    block:
-      line_numbers: false
+# 默认值
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
 
-# SEO settings
-google_analytics: # Add your Google Analytics ID here
-twitter:
-  username: cyrilmottier
-  card: summary
+# SEO 设置
+lang: zh-CN
+locale: zh_CN
 
-# Theme settings
-theme_color: "#0066cc"
-background_color: "#ffffff"
-
-# Reading time calculation
-reading_time: true
-
-# Show excerpts on home page
-show_excerpts: true
-
-# Date format
-date_format: "%B %d, %Y"
-
-# Time zone
-timezone: Europe/Paris 
+# 社交媒体链接
+social:
+  twitter: "yourusername"
+  github: "yourusername"
+  linkedin: "yourusername" 

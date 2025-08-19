@@ -1,103 +1,64 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ site.lang | default: 'zh-CN' }}" data-theme="light">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     
-    <title>{% if page.title %}{{ page.title | escape }} – {% endif %}{{ site.title | escape }}</title>
-    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+    <!-- SEO Tags -->
+    {% seo %}
     
-    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}">
     
-    <!-- Icons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    
-    {% if jekyll.environment == 'production' and site.google_analytics %}
-    {% include google-analytics.html %}
-    {% endif %}
+    <!-- Theme Detection Script -->
+    <script>
+        // 检测系统主题偏好
+        if (localStorage.getItem('theme') === 'dark' || 
+            (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 </head>
-
-<body class="{{ page.layout }}">
-    <div class="site-container">
+<body>
+    <div class="container">
+        <!-- Header -->
         <header class="site-header">
-            <div class="header-content">
-                <div class="site-title-section">
-                    <h1 class="site-title">
-                        <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
-                    </h1>
-                    {% if site.tagline %}
-                    <p class="site-tagline">{{ site.tagline }}</p>
-                    {% endif %}
+            <nav class="site-nav">
+                <div class="nav-left">
+                    <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
                 </div>
-                
-                <nav class="site-nav">
-                    <ul class="nav-list">
-                        <li><a href="{{ "/" | relative_url }}" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
-                        <li><a href="{{ "/about/" | relative_url }}" {% if page.url contains "/about" %}class="active"{% endif %}>About</a></li>
-                        <li><a href="{{ "/archive/" | relative_url }}" {% if page.url contains "/archive" %}class="active"{% endif %}>Archive</a></li>
+                <div class="nav-right">
+                    <ul class="nav-menu">
+                        <li><a href="{{ '/about' | relative_url }}">About</a></li>
+                        <li class="nav-separator">|</li>
+                        <li>
+                            <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
+                                <span class="theme-toggle-light">LIGHT</span>
+                                <span class="theme-toggle-dark">DARK</span>
+                            </button>
+                        </li>
                     </ul>
-                    
-                    <div class="theme-toggle">
-                        <button id="theme-toggle" aria-label="Toggle theme">
-                            <span class="theme-icon">🌙</span>
-                        </button>
-                    </div>
-                </nav>
-            </div>
+                </div>
+            </nav>
         </header>
 
+        <!-- Main Content -->
         <main class="site-main">
             {{ content }}
         </main>
 
+        <!-- Footer -->
         <footer class="site-footer">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <p>&copy; {{ site.time | date: '%Y' }} {{ site.author | default: site.title }}. All rights reserved.</p>
-                </div>
-                
-                {% if site.social %}
-                <div class="social-links">
-                    {% for social in site.social %}
-                    <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
-                        {{ social.icon }}
-                    </a>
-                    {% endfor %}
-                </div>
-                {% endif %}
-            </div>
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author }}.</p>
         </footer>
     </div>
 
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const themeIcon = themeToggle.querySelector('.theme-icon');
-        
-        // Check for saved theme or default to light mode
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        body.setAttribute('data-theme', currentTheme);
-        updateThemeIcon(currentTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            body.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-        
-        function updateThemeIcon(theme) {
-            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-        }
-    </script>
+    <!-- JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html> 

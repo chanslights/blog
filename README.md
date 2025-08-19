@@ -1,46 +1,41 @@
----
-title: 个人博客
-permalink: /blog/
----
+# Cyril Mottier 风格个人博客
 
-# Cyril Mottier Style Blog
+一个受 [Cyril Mottier 网站](https://cyrilmottier.com/) 启发的极简主义个人博客，使用 Jekyll 构建，专为 GitHub Pages 设计。
 
-A minimalist personal blog inspired by [Cyril Mottier's website](https://cyrilmottier.com/), built with Jekyll and designed for GitHub Pages.
+## 特性
 
-## Features
+- **简洁极简设计** - 受 Cyril Mottier 美学启发
+- **深浅主题切换** - 支持系统偏好检测
+- **响应式布局** - 在所有设备上完美显示
+- **快速加载** - 优化的 CSS 和最少的 JavaScript
+- **SEO 优化** - 完善的 meta 标签和结构化数据
+- **GitHub Pages 就绪** - 一键部署
 
-- **Clean, minimalist design** inspired by Cyril Mottier's aesthetic
-- **Dark/Light theme toggle** with system preference detection
-- **Responsive layout** that works on all devices
-- **Fast loading** with optimized CSS and minimal JavaScript
-- **SEO optimized** with proper meta tags and structured data
-- **GitHub Pages ready** for easy deployment
+## 快速开始
 
-## Quick Start
+### 环境要求
 
-### Prerequisites
-
-- Ruby 2.7 or higher
+- Ruby 2.7 或更高版本
 - Bundler gem
 
-### Local Development
+### 本地开发
 
-1. **Install dependencies:**
+1. **安装依赖：**
    ```bash
    bundle install --path vendor/bundle
    ```
 
-2. **Start the development server:**
+2. **启动开发服务器：**
    ```bash
    ./start.sh
    ```
    
-   Or manually:
+   或手动启动：
    ```bash
    bundle exec jekyll serve --host 127.0.0.1 --port 4000 --livereload
    ```
 
-3. **Open your browser and visit:**
+3. **打开浏览器访问：**
    ```
    http://localhost:4000
    ```

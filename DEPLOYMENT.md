@@ -1,196 +1,151 @@
-# GitHub Pages 博客部署指南
+# GitHub Pages 部署指南
 
-本指南将帮助你使用 GitHub Pages 部署你的个人博客。
+这个博客已经配置好了，可以直接部署到 GitHub Pages。
 
-## 前置要求
+## 快速部署步骤
 
-1. **GitHub 账户**: 确保你有一个 GitHub 账户
-2. **Ruby 环境**: 本地需要安装 Ruby 2.7.0 或更高版本
-3. **Git**: 本地需要安装 Git
+### 1. 创建 GitHub 仓库
 
-## 步骤 1: 创建 GitHub 仓库
+有两种方式：
 
-1. 登录 GitHub，点击右上角的 "+" 号，选择 "New repository"
-2. 仓库名称设置为：`你的用户名.github.io`（例如：`johndoe.github.io`）
-3. 选择 "Public"（公开）
-4. 不要勾选 "Add a README file"
-5. 点击 "Create repository"
+**方式一：用户/组织网站（推荐）**
+- 创建名为 `username.github.io` 的仓库
+- 网站将在 `https://username.github.io` 访问
 
-## 步骤 2: 配置仓库设置
+**方式二：项目网站**
+- 创建任意名称的仓库，如 `my-blog`
+- 网站将在 `https://username.github.io/my-blog` 访问
 
-1. 进入你刚创建的仓库
-2. 点击 "Settings" 标签
-3. 在左侧菜单中找到 "Pages"
-4. 在 "Source" 部分，选择 "Deploy from a branch"
-5. 在 "Branch" 下拉菜单中选择 "main" 分支
-6. 点击 "Save"
+### 2. 推送代码到 GitHub
 
-## 步骤 3: 本地环境准备
-
-### 安装 Ruby
-
-**macOS (使用 Homebrew):**
 ```bash
+# 初始化 Git 仓库
+git init
+
+# 添加所有文件
+git add .
+
+# 提交代码
+git commit -m "Initial commit: Cyril Mottier style blog"
+
+# 添加远程仓库
+git remote add origin https://github.com/username/repository-name.git
+
+# 推送到 GitHub
+git push -u origin main
+```
+
+### 3. 启用 GitHub Pages
+
+1. 进入 GitHub 仓库页面
+2. 点击 **Settings** 选项卡
+3. 在左侧菜单中找到 **Pages**
+4. 在 **Source** 下选择 **Deploy from a branch**
+5. 选择 **main** 分支和 **/ (root)** 文件夹
+6. 点击 **Save**
+
+### 4. 配置域名（可选）
+
+如果你有自定义域名：
+
+1. 在仓库根目录创建 `CNAME` 文件
+2. 在文件中写入你的域名，如 `blog.yourdomain.com`
+3. 在域名提供商处配置 DNS：
+   - 添加 CNAME 记录指向 `username.github.io`
+   - 或添加 A 记录指向 GitHub Pages IP
+
+## 本地开发
+
+### 安装依赖
+
+```bash
+# 安装 Ruby 和 Bundler（如果没有）
+# macOS
 brew install ruby
+
+# 安装项目依赖
+bundle install --path vendor/bundle
 ```
 
-**Windows:**
-- 下载并安装 [RubyInstaller](https://rubyinstaller.org/)
-
-**Linux (Ubuntu/Debian):**
-```bash
-sudo apt update
-sudo apt install ruby-full
-```
-
-### 安装 Jekyll
+### 启动开发服务器
 
 ```bash
-gem install jekyll bundler
+# 使用脚本启动（推荐）
+./start.sh
+
+# 或手动启动
+bundle exec jekyll serve --host 127.0.0.1 --port 4000 --livereload
 ```
 
-## 步骤 4: 克隆仓库到本地
+然后访问 `http://localhost:4000` 查看网站。
 
-```bash
-git clone https://github.com/你的用户名/你的用户名.github.io.git
-cd 你的用户名.github.io
-```
+## 自定义配置
 
-## 步骤 5: 安装依赖
+### 修改网站信息
 
-```bash
-bundle install
-```
-
-## 步骤 6: 本地测试
-
-```bash
-bundle exec jekyll serve
-```
-
-然后在浏览器中访问 `http://localhost:4000` 查看你的博客。
-
-## 步骤 7: 自定义配置
-
-### 修改 _config.yml
-
-编辑 `_config.yml` 文件，更新以下信息：
+编辑 `_config.yml` 文件：
 
 ```yaml
-title: 你的博客标题
-author: 你的名字
-email: your-email@example.com
-url: "https://你的用户名.github.io"
-baseurl: ""  # 如果仓库名是 用户名.github.io，这里留空
+title: "你的名字"
+description: "你的描述"
+author: "你的名字"
+email: "your.email@example.com"
+url: "https://yourusername.github.io"
+baseurl: ""  # 用户网站留空，项目网站填 "/repository-name"
+
+# 社交媒体链接
+social:
+  twitter: "yourusername"
+  github: "yourusername"
+  linkedin: "yourusername"
 ```
 
-### 修改个人信息
+### 修改样式
 
-1. 编辑 `_pages/about.md`，更新你的个人信息
-2. 编辑 `_layouts/default.html`，更新社交媒体链接
-3. 根据需要修改样式文件 `assets/css/main.css`
+主要样式文件在 `assets/css/main.css`，你可以：
+- 修改颜色变量
+- 调整字体和间距
+- 自定义深色主题
 
-## 步骤 8: 添加文章
+### 添加新文章
 
-### 创建新文章
+在 `_posts` 目录下创建新的 Markdown 文件：
 
-在 `_posts` 目录下创建新的 Markdown 文件，文件名格式为：`YYYY-MM-DD-文章标题.md`
-
-例如：`2024-01-17-my-first-post.md`
-
-### 文章头部信息
-
-每篇文章都需要包含以下头部信息：
-
-```yaml
+```markdown
 ---
 layout: post
 title: "文章标题"
-date: 2024-01-17
-categories: [分类名称]
-tags: [标签1, 标签2]
-description: "文章描述"
+date: 2024-12-19 10:00:00 +0800
+categories: [category1, category2]
+tags: [tag1, tag2, tag3]
 ---
+
+文章内容...
 ```
-
-## 步骤 9: 提交和推送
-
-```bash
-git add .
-git commit -m "Initial blog setup"
-git push origin main
-```
-
-## 步骤 10: 等待部署
-
-GitHub Pages 会自动构建和部署你的博客。通常需要几分钟时间。
-
-部署完成后，你可以通过 `https://你的用户名.github.io` 访问你的博客。
-
-## 自定义域名（可选）
-
-如果你想使用自定义域名：
-
-1. 在 `_config.yml` 中更新 `url` 字段
-2. 在仓库的 "Settings" > "Pages" 中添加自定义域名
-3. 在你的域名提供商处添加 CNAME 记录
 
 ## 故障排除
 
 ### 常见问题
 
-1. **构建失败**
-   - 检查 `_config.yml` 语法是否正确
-   - 查看 GitHub Actions 日志
+1. **网站没有更新**
+   - 检查 GitHub Actions 是否成功运行
+   - GitHub Pages 部署可能需要几分钟时间
 
-2. **样式不显示**
+2. **样式没有加载**
+   - 检查 `_config.yml` 中的 `baseurl` 设置
    - 确保 CSS 文件路径正确
-   - 检查文件权限
 
-3. **文章不显示**
-   - 检查文章文件名格式
-   - 确保文章头部信息正确
+3. **本地开发出错**
+   - 确保 Ruby 版本 >= 2.7
+   - 删除 `Gemfile.lock` 后重新运行 `bundle install`
 
 ### 获取帮助
 
-- [Jekyll 官方文档](https://jekyllrb.com/docs/)
-- [GitHub Pages 文档](https://pages.github.com/)
-- [Jekyll 社区](https://talk.jekyllrb.com/)
+如果遇到问题，可以：
+- 查看 [Jekyll 官方文档](https://jekyllrb.com/)
+- 查看 [GitHub Pages 文档](https://docs.github.com/en/pages)
+- 在 GitHub Issues 中提问
 
-## 维护和更新
+## 许可证
 
-### 定期更新
-
-```bash
-# 拉取最新代码
-git pull origin main
-
-# 更新依赖
-bundle update
-
-# 本地测试
-bundle exec jekyll serve
-
-# 提交更改
-git add .
-git commit -m "Update blog content"
-git push origin main
-```
-
-### 备份
-
-定期备份你的博客内容：
-
-```bash
-# 创建备份分支
-git checkout -b backup-$(date +%Y%m%d)
-
-# 推送到远程
-git push origin backup-$(date +%Y%m%d)
-```
-
-## 结语
-
-恭喜！你现在拥有了一个功能完整的个人博客。记得定期更新内容，与读者互动，享受写作的乐趣！
-
-如果你有任何问题，欢迎在 GitHub 上提交 Issue 或联系我。 
+本项目基于 MIT 许可证开源。 

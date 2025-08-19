@@ -1,34 +1,27 @@
 ---
-layout: default
+layout: page
 title: About
 permalink: /about/
 ---
 
-<div class="hero">
-    <h1 class="hero-title">Cyril Mottier</h1>
-    <p class="hero-subtitle">Leadership, engineering and product</p>
-</div>
+# 关于我
 
-<div class="post-content">
-    <p>I'm a passionate technologist and leader with extensive experience in mobile development, engineering management, and product strategy.</p>
-    
-    <p>Throughout my career, I've focused on building scalable mobile projects, fostering engineering excellence, and creating delightful user experiences. I believe in the power of technology to transform lives and businesses.</p>
-    
-    <p>On this blog, I share insights about:</p>
-    
-    <ul>
-        <li>Engineering leadership and team building</li>
-        <li>Mobile development best practices</li>
-        <li>Product strategy and user experience design</li>
-        <li>Technology trends and industry observations</li>
-    </ul>
-    
-    <p>When I'm not coding or writing, I enjoy speaking at conferences, mentoring developers, and exploring new technologies that push the boundaries of what's possible.</p>
-    
-    <p>Feel free to connect with me:</p>
-    
-    <ul>
-        <li>GitHub: <a href="https://github.com/chanslights" target="_blank">@chanslights</a></li>
-        <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
-    </ul>
-</div> 
+欢迎来到我的个人博客！
+
+这里是我分享技术见解、学习笔记和个人思考的地方。我专注于软件开发、技术架构和产品设计等领域。
+
+## 我的关注领域
+
+- **软件工程** - 代码质量、架构设计、最佳实践
+- **技术管理** - 团队协作、项目管理、技术决策
+- **产品思维** - 用户体验、产品策略、市场洞察
+
+## 联系方式
+
+如果你想与我交流或合作，可以通过以下方式联系我：
+
+- 邮箱：[{{ site.email }}](mailto:{{ site.email }})
+- GitHub：[{{ site.social.github }}](https://github.com/{{ site.social.github }})
+- Twitter：[{{ site.social.twitter }}](https://twitter.com/{{ site.social.twitter }})
+
+感谢你的访问，希望这里的内容对你有所帮助！ 
