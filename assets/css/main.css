@@ -171,7 +171,7 @@ body {
     font-size: 1.25rem;
     color: var(--text-secondary);
     font-weight: 400;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-xxl);
 }
 
 /* Posts List */
