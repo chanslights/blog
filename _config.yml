@@ -1,43 +1,54 @@
-# Jekyll 配置文件
-title: 个人博客
-description: 记录学习心得、技术分享和生活感悟
-author: chans
-email: jiangsc2024@163.com
+# Site settings
+title: "我的博客"
+author: "我的名字"
+tagline: "思考，创作，分享"
+description: "一个专注于技术分享与思考的个人博客"
+email: your-email@example.com
 url: "https://chanslights.github.io"
 baseurl: "/blog"
 
-# 构建设置
+# Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title/
 
-# 插件
+# Plugins
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-seo-tag
 
-# 分页
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title/
+
+# Pagination
 paginate: 10
-paginate_path: "/page/:num/"
+paginate_path: "/page:num/"
 
-# 分类和标签
-category_layout: category
-tag_layout: tag
-
-# 时区
-timezone: Asia/Shanghai
-
-# 排除文件
+# Exclude from processing
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - vendor
-  - .git
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
   - README.md
+  - LICENSE
+  - CHANGELOG.md
+  - start.sh
+  - start.bat
 
-# 默认布局
+# Sass
+sass:
+  style: compressed
+  sass_dir: assets/css
+
+# Defaults
 defaults:
   - scope:
       path: ""
@@ -45,9 +56,18 @@ defaults:
     values:
       layout: "post"
       comments: true
-      share: true
   - scope:
       path: ""
-      type: "pages"
     values:
-      layout: "page" 
+      layout: "default"
+
+# SEO
+twitter:
+  username: your-twitter
+  card: summary
+
+social:
+  name: 我的名字
+  links:
+    - https://github.com/chanslights
+    - https://twitter.com/your-twitter 
