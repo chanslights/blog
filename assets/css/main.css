@@ -197,8 +197,8 @@ body {
 }
 
 .post-item-title {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 0.875rem;
+    font-weight: 400;
     margin-bottom: var(--spacing-xs);
     line-height: 1.3;
     text-align: center; /* 居中显示文章标题 */
