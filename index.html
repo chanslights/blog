@@ -1,0 +1,115 @@
+---
+layout: default
+title: 首页
+---
+
+<div class="home">
+    <!-- 欢迎区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">欢迎来到我的博客</h1>
+            <p class="hero-description">{{ site.description }}</p>
+            <div class="hero-actions">
+                <a href="{{ '/categories/' | relative_url }}" class="btn btn-primary">
+                    <i class="fas fa-folder"></i> 浏览分类
+                </a>
+                <a href="{{ '/about/' | relative_url }}" class="btn btn-secondary">
+                    <i class="fas fa-user"></i> 关于我
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最新文章 -->
+    <section class="latest-posts">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-newspaper"></i> 最新文章
+            </h2>
+            <a href="{{ '/posts/' | relative_url }}" class="view-all">
+                查看全部 <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="posts-grid">
+            {% for post in site.posts limit:6 %}
+            <article class="post-card">
+                <div class="post-card-content">
+                    <header class="post-card-header">
+                        <h3 class="post-card-title">
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        </h3>
+                        <div class="post-card-meta">
+                            <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">
+                                <i class="fas fa-calendar"></i>
+                                {{ post.date | date: "%m月%d日" }}
+                            </time>
+                            
+                            {% if post.categories %}
+                            <span class="post-category">
+                                <i class="fas fa-folder"></i>
+                                {{ post.categories.first }}
+                            </span>
+                            {% endif %}
+                        </div>
+                    </header>
+                    
+                    {% if post.description %}
+                    <p class="post-card-excerpt">{{ post.description }}</p>
+                    {% endif %}
+                    
+                    <div class="post-card-footer">
+                        <a href="{{ post.url | relative_url }}" class="read-more">
+                            阅读全文 <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- 分类概览 -->
+    <section class="categories-overview">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-folder-tree"></i> 文章分类
+            </h2>
+        </div>
+
+        <div class="categories-grid">
+            {% assign categories = site.categories | sort %}
+            {% for category in categories limit:6 %}
+            <div class="category-card">
+                <div class="category-icon">
+                    <i class="fas fa-folder"></i>
+                </div>
+                <h3 class="category-name">{{ category[0] }}</h3>
+                <p class="category-count">{{ category[1].size }} 篇文章</p>
+                <a href="{{ '/categories/' | relative_url }}{{ category[0] | slugify }}" class="category-link">
+                    查看分类 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- 标签云 -->
+    <section class="tags-cloud">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-tags"></i> 热门标签
+            </h2>
+        </div>
+
+        <div class="tags-container">
+            {% assign tags = site.tags | sort %}
+            {% for tag in tags limit:20 %}
+            <a href="{{ '/tags/' | relative_url }}{{ tag[0] | slugify }}" class="tag-item">
+                {{ tag[0] }}
+                <span class="tag-count">({{ tag[1].size }})</span>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+</div> 

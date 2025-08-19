@@ -1,0 +1,53 @@
+# Jekyll 配置文件
+title: 个人博客
+description: 记录学习心得、技术分享和生活感悟
+author: chans
+email: jiangsc2024@163.com
+url: "https://chanslights.github.io"
+baseurl: "/blog"
+
+# 构建设置
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# 分页
+paginate: 10
+paginate_path: "/page/:num/"
+
+# 分类和标签
+category_layout: category
+tag_layout: tag
+
+# 时区
+timezone: Asia/Shanghai
+
+# 排除文件
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - README.md
+
+# 默认布局
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      share: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page" 
