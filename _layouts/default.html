@@ -1,50 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: "Cyril Mottier" }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>{% if page.title %}{{ page.title | escape }} – {% endif %}{{ site.title | escape }}</title>
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
     
+    <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+    
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <!-- Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
-    <!-- Theme -->
-    <script>
-        const theme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', theme);
-    </script>
+    {% if jekyll.environment == 'production' and site.google_analytics %}
+    {% include google-analytics.html %}
+    {% endif %}
 </head>
-<body>
-    <div class="container">
+
+<body class="{{ page.layout }}">
+    <div class="site-container">
         <header class="site-header">
-            <nav class="nav">
-                <div class="nav-left">
-                    <button class="menu-toggle" onclick="toggleMenu()">Menu</button>
+            <div class="header-content">
+                <div class="site-title-section">
+                    <h1 class="site-title">
+                        <a href="{{ "/" | relative_url }}">{{ site.title }}</a>
+                    </h1>
+                    {% if site.tagline %}
+                    <p class="site-tagline">{{ site.tagline }}</p>
+                    {% endif %}
                 </div>
-                <div class="nav-right">
-                    <a href="{{ '/about' | relative_url }}" class="nav-link">About</a>
-                    <span class="nav-separator">|</span>
-                    <button class="theme-toggle" onclick="toggleTheme()">
-                        <span class="theme-light">LIGHT</span><span class="theme-dark">DARK</span>
-                    </button>
-                </div>
-            </nav>
+                
+                <nav class="site-nav">
+                    <ul class="nav-list">
+                        <li><a href="{{ "/" | relative_url }}" {% if page.url == "/" %}class="active"{% endif %}>Home</a></li>
+                        <li><a href="{{ "/about/" | relative_url }}" {% if page.url contains "/about" %}class="active"{% endif %}>About</a></li>
+                        <li><a href="{{ "/archive/" | relative_url }}" {% if page.url contains "/archive" %}class="active"{% endif %}>Archive</a></li>
+                    </ul>
+                    
+                    <div class="theme-toggle">
+                        <button id="theme-toggle" aria-label="Toggle theme">
+                            <span class="theme-icon">🌙</span>
+                        </button>
+                    </div>
+                </nav>
+            </div>
         </header>
 
-        <main class="main-content">
+        <main class="site-main">
             {{ content }}
         </main>
 
         <footer class="site-footer">
-            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.author | default: "Cyril Mottier" }}.</p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; {{ site.time | date: '%Y' }} {{ site.author | default: site.title }}. All rights reserved.</p>
+                </div>
+                
+                {% if site.social %}
+                <div class="social-links">
+                    {% for social in site.social %}
+                    <a href="{{ social.url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ social.name }}">
+                        {{ social.icon }}
+                    </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
         </footer>
     </div>
 
-    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+        
+        // Check for saved theme or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+        updateThemeIcon(currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+    </script>
 </body>
 </html> 

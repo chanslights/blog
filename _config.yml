@@ -1,52 +1,37 @@
 # Site settings
 title: "Cyril Mottier"
+tagline: "Android Developer & Engineering Leader"
+description: "Thoughts on Android development, mobile engineering, and building great products."
 author: "Cyril Mottier"
-tagline: "Leadership, engineering and product"
-description: "Personal blog focused on leadership, engineering and product development"
-email: your-email@example.com
-url: "https://chanslights.github.io"
-baseurl: "/blog"
+email: "hello@cyrilmottier.com"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://cyrilmottier.github.io" # the base hostname & protocol for your site
+
+# Social links
+social:
+  - name: "Twitter"
+    url: "https://twitter.com/cyrilmottier"
+    icon: "🐦"
+  - name: "GitHub"
+    url: "https://github.com/cyrilmottier"
+    icon: "💻"
+  - name: "LinkedIn"
+    url: "https://linkedin.com/in/cyrilmottier"
+    icon: "💼"
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: /:year/:month/:day/:title/
 
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+# Pagination
+paginate: 10
+paginate_path: "/page/:num/"
 
 # Collections
 collections:
   posts:
     output: true
-    permalink: /:year/:month/:day/:title/
-
-# Pagination
-paginate: 10
-paginate_path: "/page:num/"
-
-# Exclude from processing
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - README.md
-  - LICENSE
-  - CHANGELOG.md
-  - start.sh
-  - start.bat
-
-# Sass
-sass:
-  style: compressed
-  sass_dir: assets/css
 
 # Defaults
 defaults:
@@ -61,13 +46,61 @@ defaults:
     values:
       layout: "default"
 
-# SEO
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+  - LICENSE
+  - .gitignore
+  - .git/
+
+# Sass
+sass:
+  style: compressed
+  sass_dir: _sass
+
+# Markdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
+# SEO settings
+google_analytics: # Add your Google Analytics ID here
 twitter:
-  username: your-twitter
+  username: cyrilmottier
   card: summary
 
-social:
-  name: Cyril Mottier
-  links:
-    - https://github.com/chanslights
-    - https://twitter.com/your-twitter 
+# Theme settings
+theme_color: "#0066cc"
+background_color: "#ffffff"
+
+# Reading time calculation
+reading_time: true
+
+# Show excerpts on home page
+show_excerpts: true
+
+# Date format
+date_format: "%B %d, %Y"
+
+# Time zone
+timezone: Europe/Paris 
